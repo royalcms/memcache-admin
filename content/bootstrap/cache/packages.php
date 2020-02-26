@@ -151,28 +151,6 @@
       'RC_Timer' => 'Royalcms\\Component\\Timer\\Facades\\Timer',
     ),
   ),
-  'royalcms/upload' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Royalcms\\Component\\Upload\\UploadServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'RC_Upload' => 'Royalcms\\Component\\Upload\\Facades\\Upload',
-    ),
-  ),
-  'royalcms/uploader' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Royalcms\\Component\\Uploader\\UploaderServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'RC_Uploader' => 'Royalcms\\Component\\Uploader\\Facades\\Uploader',
-    ),
-  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
