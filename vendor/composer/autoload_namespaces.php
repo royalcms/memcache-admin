@@ -7,5 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Raven_' => array($vendorDir . '/sentry/sentry/lib'),
+    'Highlight\\' => array($vendorDir . '/scrivo/highlight.php'),
+    'HighlightUtilities\\' => array($vendorDir . '/scrivo/highlight.php'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
 );
