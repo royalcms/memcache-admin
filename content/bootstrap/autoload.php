@@ -69,7 +69,7 @@ if (file_exists($aliasPath = __DIR__ . '/classalias.php')) {
 }
 
 $contentDir = realpath(__DIR__ . '/../');
-ClassManager::getLoader()->setPsr4('Ecjia\\Kernel\\', $contentDir . '/kernel');
+ClassManager::getLoader()->setPsr4('Kernel\\', $contentDir . '/kernel');
 
 
 /*
