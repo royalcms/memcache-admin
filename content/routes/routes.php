@@ -73,7 +73,8 @@ collect(config('bundles', []))->map(function ($app) {
     }
 });
 
-RC_Rewrite::add_rewrite_rule('^admincp/([^/]*)/([^/]*)/?', 'index.php?m=admincp&c=$matches[1]&a=$matches[2]', 'top');
+//rewrite
+//RC_Rewrite::add_rewrite_rule('^admincp/([^/]*)/([^/]*)/?', 'index.php?m=admincp&c=$matches[1]&a=$matches[2]', 'top');
 
 $rules = $royalcms['config']['route.rules'];
 collect($rules)->each(function ($item, $key) {
