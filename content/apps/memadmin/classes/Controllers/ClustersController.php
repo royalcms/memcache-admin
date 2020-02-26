@@ -1,11 +1,18 @@
 <?php
 
+namespace App\Memadmin\Controllers;
+
+use RC_Lang;
+use RC_Session;
+use RC_Theme;
+use RC_Uri;
+
 define('APP_NAME', 'MEMADMIN');
 define('APP_VERSION', '2.0');
 
 RC_Session::start();
 
-class ClustersController extends Royalcms\Component\Routing\Controller
+class ClustersController extends \Royalcms\Component\Routing\Controller
 {
 
     protected $view;
@@ -37,16 +44,16 @@ class ClustersController extends Royalcms\Component\Routing\Controller
 
         $this->view->assign('add_cluster', RC_Uri::url('memadmin/clusters/add_cluster'));
 
-        $clusterlists   = Ecjia\App\Memadmin\MemcacheServer::singleton()->getAllClusters();
+        $clusterlists   = \App\Memadmin\MemcacheServer::singleton()->getAllClusters();
 
-        $cluster        =  royalcms('request')->input('cluster', Ecjia\App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $cluster        = royalcms('request')->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
 
-        $servers        = Ecjia\App\Memadmin\MemcacheServer::singleton()->getAllServers($cluster);
+        $servers        = \App\Memadmin\MemcacheServer::singleton()->getAllServers($cluster);
 //dd($clusterlists);
         $this->view->assign('clusterlists',       $clusterlists);
         $this->view->assign('cluster',            $cluster);
         $this->view->assign('servers',            $servers);
-        $this->view->assign('defaultcluster',     Ecjia\App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $this->view->assign('defaultcluster',     \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
 
         $this->view->assign('remove_cluster',     RC_Uri::url('memadmin/clusters/remove_cluster', ['cluster' => $cluster]));
         $this->view->assign('save_servers',       RC_Uri::url('memadmin/clusters/save_servers', ['cluster' => $cluster]));
@@ -63,7 +70,7 @@ class ClustersController extends Royalcms\Component\Routing\Controller
 
         if( !empty($newcluster))
         {
-            Ecjia\App\Memadmin\MemcacheServer::singleton()->addCluster($newcluster);
+            \App\Memadmin\MemcacheServer::singleton()->addCluster($newcluster);
 
 //        return Ecjia\App\Memadmin\EcjiaController::showmessage('添加集群成功', 0x20 | 0x01, array('pjaxurl' => RC_Uri::url('memadmin/clusters/init', ['cluster' => $newcluster])));
             $data =  array(
@@ -82,7 +89,7 @@ class ClustersController extends Royalcms\Component\Routing\Controller
     {
         $cluster    = royalcms('request')->input('cluster');
 
-        if ($cluster == Ecjia\App\Memadmin\MemcacheServer::DEFAULT_CLUSTER) {
+        if ($cluster == \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER) {
 //            return Ecjia\App\Memadmin\EcjiaController::showmessage('出错啦，默认集群不可以删除！', 0x20 | 0x00, array('pjaxurl' => RC_Uri::url('memadmin/clusters/init')));
             $data = array(
                 'msg'   => '默认集群不可以删除',
@@ -92,7 +99,7 @@ class ClustersController extends Royalcms\Component\Routing\Controller
 
         }
 
-        Ecjia\App\Memadmin\MemcacheServer::singleton()->removeCluster($cluster);
+        \App\Memadmin\MemcacheServer::singleton()->removeCluster($cluster);
 
 //        return Ecjia\App\Memadmin\EcjiaController::showmessage('删除集群成功', 0x20 | 0x01, array('pjaxurl' => RC_Uri::url('memadmin/clusters/init')));
         $data =  array(
@@ -128,7 +135,7 @@ class ClustersController extends Royalcms\Component\Routing\Controller
             $array[$data['name']]['port'] = $data['port'];
         }
 
-        Ecjia\App\Memadmin\MemcacheServer::singleton()->saveMultiServer($array, $cluster);
+        \App\Memadmin\MemcacheServer::singleton()->saveMultiServer($array, $cluster);
 
         return rc_redirect(RC_Uri::url('memadmin/clusters/init', ['cluster' => $cluster]));
     }

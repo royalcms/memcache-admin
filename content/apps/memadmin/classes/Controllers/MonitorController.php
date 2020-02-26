@@ -1,11 +1,19 @@
 <?php
 
+namespace App\Memadmin\Controllers;
+
+use RC_File;
+use RC_Lang;
+use RC_Session;
+use RC_Theme;
+use RC_Uri;
+
 define('APP_NAME', 'MEMADMIN');
 define('APP_VERSION', '2.0');
 
 RC_Session::start();
 
-class MonitorController extends Royalcms\Component\Routing\Controller
+class MonitorController extends \Royalcms\Component\Routing\Controller
 {
 
     protected $view;
@@ -39,15 +47,15 @@ class MonitorController extends Royalcms\Component\Routing\Controller
         $this->view->assign('configure_url', array('text' => RC_Lang::get('memadmin::memadmin.monitor_configure'), 'href' => RC_Uri::url('memadmin/monitor/configure')));
 
         /* Loading ini file */
-        $_ini = Ecjia\App\Memadmin\MemcacheMonitorConfig::singleton();
+        $_ini = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
-        $cluster                =  royalcms('request')->input('cluster', Ecjia\App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $cluster                = royalcms('request')->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
 
-        $serverlists            = Ecjia\App\Memadmin\MemcacheServer::singleton()->getAllServers($cluster);
+        $serverlists            = \App\Memadmin\MemcacheServer::singleton()->getAllServers($cluster);
 
-        $cluster_select         = Ecjia\App\Memadmin\DataAnalysis::clusterSelect('cluster_select', $cluster, 'live', 'onchange="changeCluster(this);"');
+        $cluster_select         = \App\Memadmin\DataAnalysis::clusterSelect('cluster_select', $cluster, 'live', 'onchange="changeCluster(this);"');
 
-        $memAdmin               = new Ecjia\App\Memadmin\MemcacheManager();
+        $memAdmin               = new \App\Memadmin\MemcacheManager();
 
         /* Initializing : making stats dump */
         $stats                  = array();
@@ -114,10 +122,10 @@ class MonitorController extends Royalcms\Component\Routing\Controller
     public function data()
     {
         /* Initializing requests */
-        $cluster                = royalcms('request')->input('cluster', Ecjia\App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $cluster                = royalcms('request')->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
 
         /* Loading ini file */
-        $_ini                   = Ecjia\App\Memadmin\MemcacheMonitorConfig::singleton();
+        $_ini                   = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
         $file_path              = $this->_makeFilePath($cluster, $_ini->get('file_path'));
 
@@ -127,9 +135,9 @@ class MonitorController extends Royalcms\Component\Routing\Controller
         /* Initializing variables   */
         $actual                 = array();
 
-        $memAdmin               = new Ecjia\App\Memadmin\MemcacheManager();
+        $memAdmin               = new \App\Memadmin\MemcacheManager();
 
-        $serverlists            = Ecjia\App\Memadmin\MemcacheServer::singleton()->getAllServers($cluster);
+        $serverlists            = \App\Memadmin\MemcacheServer::singleton()->getAllServers($cluster);
 
         $refresh_rate           = $_ini->get('refresh_rate');
 
@@ -148,7 +156,7 @@ class MonitorController extends Royalcms\Component\Routing\Controller
             /* Making an alias @FIXME Used ?    */
             $server             = $name;
             /* Diff between old and new dump    */
-            $stats[$server]     = Ecjia\App\Memadmin\DataAnalysis::diff($previous[$server], $actual[$server]);
+            $stats[$server]     = \App\Memadmin\DataAnalysis::diff($previous[$server], $actual[$server]);
         }
 
         /* Making stats for each server */
@@ -156,7 +164,7 @@ class MonitorController extends Royalcms\Component\Routing\Controller
             /* Analysing request    */
             if ((isset($stats[$server]['uptime'])) && ($stats[$server]['uptime'] > 0)) {
                 /* Computing stats  */
-                $stats[$server]                         = Ecjia\App\Memadmin\DataAnalysis::stats($stats[$server]);
+                $stats[$server]                         = \App\Memadmin\DataAnalysis::stats($stats[$server]);
 
                 /* Because we make a diff on every key, we must reasign some values */
                 $stats[$server]['bytes_percent']        = sprintf('%.1f', $actual[$server]['bytes'] / $actual[$server]['limit_maxbytes'] * 100);
@@ -195,7 +203,7 @@ class MonitorController extends Royalcms\Component\Routing\Controller
                 echo '<div style="float: left">';
 
                 /* Total Memory */
-                echo sprintf('%10s', Ecjia\App\Memadmin\DataAnalysis::byteResize($data['limit_maxbytes']) . 'b');
+                echo sprintf('%10s', \App\Memadmin\DataAnalysis::byteResize($data['limit_maxbytes']) . 'b');
 
                 /* Memory Occupation / Alert State  */
                 if ($data['bytes_percent'] > $_ini->get('memory_alert')) {
@@ -205,7 +213,7 @@ class MonitorController extends Royalcms\Component\Routing\Controller
                 }
 
                 /* Query Time   */
-                echo sprintf('%5.0f', Ecjia\App\Memadmin\DataAnalysis::valueResize($data['query_time'])) . ' ms';
+                echo sprintf('%5.0f', \App\Memadmin\DataAnalysis::valueResize($data['query_time'])) . ' ms';
 
                 /* Current connection   */
                 echo sprintf('%6s', $data['curr_connections']);
@@ -218,29 +226,29 @@ class MonitorController extends Royalcms\Component\Routing\Controller
                 }
 
                 /* Request rate */
-                echo sprintf('%8s', Ecjia\App\Memadmin\DataAnalysis::valueResize($data['request_rate']));
+                echo sprintf('%8s', \App\Memadmin\DataAnalysis::valueResize($data['request_rate']));
 
                 /* Get rate */
-                echo sprintf('%8s', Ecjia\App\Memadmin\DataAnalysis::valueResize($data['get_rate']));
+                echo sprintf('%8s', \App\Memadmin\DataAnalysis::valueResize($data['get_rate']));
 
                 /* Set rate */
-                echo sprintf('%8s', Ecjia\App\Memadmin\DataAnalysis::valueResize($data['set_rate']));
+                echo sprintf('%8s', \App\Memadmin\DataAnalysis::valueResize($data['set_rate']));
 
                 /* Delete rate  */
-                echo sprintf('%8s', Ecjia\App\Memadmin\DataAnalysis::valueResize($data['delete_rate']));
+                echo sprintf('%8s', \App\Memadmin\DataAnalysis::valueResize($data['delete_rate']));
 
                 /* Eviction rate    */
                 if ($data['eviction_rate'] > $_ini->get('eviction_alert')) {
-                    echo str_pad('', 8 - strlen(Ecjia\App\Memadmin\DataAnalysis::valueResize($data['eviction_rate'])), ' ') . '<span class="red">' . Ecjia\App\Memadmin\DataAnalysis::valueResize($data['eviction_rate']) . '</span>';
+                    echo str_pad('', 8 - strlen(Ecjia\App\Memadmin\DataAnalysis::valueResize($data['eviction_rate'])), ' ') . '<span class="red">' . \App\Memadmin\DataAnalysis::valueResize($data['eviction_rate']) . '</span>';
                 } else {
-                    echo sprintf('%8s', Ecjia\App\Memadmin\DataAnalysis::valueResize($data['eviction_rate']));
+                    echo sprintf('%8s', \App\Memadmin\DataAnalysis::valueResize($data['eviction_rate']));
                 }
 
                 /* Bytes read   */
-                echo sprintf('%11s', Ecjia\App\Memadmin\DataAnalysis::byteResize($data['bytes_read'] / $data['time']) . 'b');
+                echo sprintf('%11s', \App\Memadmin\DataAnalysis::byteResize($data['bytes_read'] / $data['time']) . 'b');
 
                 /* Bytes written    */
-                echo sprintf('%10s', Ecjia\App\Memadmin\DataAnalysis::byteResize($data['bytes_written'] / $data['time']) . 'b');
+                echo sprintf('%10s', \App\Memadmin\DataAnalysis::byteResize($data['bytes_written'] / $data['time']) . 'b');
                 echo '</div>';
 
             } else {
@@ -266,7 +274,7 @@ class MonitorController extends Royalcms\Component\Routing\Controller
         $this->view->assign('live_stats', RC_Uri::url('memadmin/monitor/live_stats'));
         $this->view->assign('miscellaneous', RC_Uri::url('memadmin/monitor/miscellaneous'));
 
-        $config = Ecjia\App\Memadmin\MemcacheMonitorConfig::singleton();
+        $config = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
         $refresh_rate           = $config->get('refresh_rate');
         $memory_alert           = $config->get('memory_alert');
@@ -287,7 +295,7 @@ class MonitorController extends Royalcms\Component\Routing\Controller
 
     public function live_stats()
     {
-        $config = Ecjia\App\Memadmin\MemcacheMonitorConfig::singleton();
+        $config = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
         $refresh_rate           = royalcms('request')->input('refresh_rate');
         $memory_alert           = royalcms('request')->input('memory_alert');
@@ -310,7 +318,7 @@ class MonitorController extends Royalcms\Component\Routing\Controller
     
     public function miscellaneous()
     {
-        $config = Ecjia\App\Memadmin\MemcacheMonitorConfig::singleton();
+        $config = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
         $connection_timeout     = royalcms('request')->input('connection_timeout');
         $max_item_dump          = royalcms('request')->input('max_item_dump');

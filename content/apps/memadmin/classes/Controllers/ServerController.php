@@ -1,11 +1,17 @@
 <?php
 
+namespace App\Memadmin\Controllers;
+
+use RC_Session;
+use RC_Theme;
+use RC_Uri;
+
 define('APP_NAME', 'MEMADMIN');
 define('APP_VERSION', '2.0');
 
 RC_Session::start();
 
-class ServerController extends Royalcms\Component\Routing\Controller
+class ServerController extends \Royalcms\Component\Routing\Controller
 {
 
     protected $view;
@@ -36,15 +42,15 @@ class ServerController extends Royalcms\Component\Routing\Controller
     public function init()
     {
         /* Loading ini file */
-        $_ini                       = Ecjia\App\Memadmin\ConfigurationLoader::singleton();
+        $_ini                       = \App\Memadmin\ConfigurationLoader::singleton();
 
-        $cluster                    = royalcms('request')->input('cluster', Ecjia\App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $cluster                    = royalcms('request')->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
         $server                     = royalcms('request')->input('server');
 
-        $cluster_list               = Ecjia\App\Memadmin\DataAnalysis::server_clusterSelect('server_select', $cluster, $server, '', 'onchange="changeServer(this)"');
-        $clusterlists               = Ecjia\App\Memadmin\MemcacheServer::singleton()->getAllClusters();
+        $cluster_list               = \App\Memadmin\DataAnalysis::server_clusterSelect('server_select', $cluster, $server, '', 'onchange="changeServer(this)"');
+        $clusterlists               = \App\Memadmin\MemcacheServer::singleton()->getAllClusters();
 
-        $memAdmin                   = new Ecjia\App\Memadmin\MemcacheManager();
+        $memAdmin                   = new \App\Memadmin\MemcacheManager();
 
         /* Initializing stats & settings array */
         $stats                      = array();
@@ -63,8 +69,8 @@ class ServerController extends Royalcms\Component\Routing\Controller
                 # Getting Stats & Slabs stats
                 $data           = array();
                 $data['stats']  = $memAdmin->switchServer($value['hostname'], $value['port'])->driver($_ini->get('stats_api'))->getStats();
-                $data['slabs']  = Ecjia\App\Memadmin\DataAnalysis::slabs($memAdmin->switchServer($value['hostname'], $value['port'])->driver($_ini->get('slabs_api'))->getSlabs());
-                $stats = Ecjia\App\Memadmin\DataAnalysis::merge($stats, $data['stats']);
+                $data['slabs']  = \App\Memadmin\DataAnalysis::slabs($memAdmin->switchServer($value['hostname'], $value['port'])->driver($_ini->get('slabs_api'))->getSlabs());
+                $stats = \App\Memadmin\DataAnalysis::merge($stats, $data['stats']);
 
                 # Computing stats
                 if (isset($data['slabs']['total_malloced'], $data['slabs']['total_wasted'])) {
@@ -93,7 +99,7 @@ class ServerController extends Royalcms\Component\Routing\Controller
 
             $this->__formatStatsData($stats, $settings, $slabs);
 
-            $updaime            = Ecjia\App\Memadmin\DataAnalysis::uptime($uptime[$name]);
+            $updaime            = \App\Memadmin\DataAnalysis::uptime($uptime[$name]);
             $count_cluster      = count($cluster);
 
             $this->view->assign('count_cluster',          $count_cluster);
@@ -139,16 +145,16 @@ class ServerController extends Royalcms\Component\Routing\Controller
     protected function __formatStatsData(& $stats, & $settings, & $slabs)
     {
         /* Analysis */
-        $stats = Ecjia\App\Memadmin\DataAnalysis::stats($stats);
+        $stats = \App\Memadmin\DataAnalysis::stats($stats);
 
         if (isset($stats['delete_hits'])) {
-            $stats['delete_hits']                   = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['delete_hits']);
+            $stats['delete_hits']                   = \App\Memadmin\DataAnalysis::hitResize($stats['delete_hits']);
         } else {
             $stats['delete_hits']                   = 'N/A on' . $stats['version'];
         }
 
         if (isset($stats['delete_misses'])) {
-            $stats['delete_misses']                 = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['delete_misses']);
+            $stats['delete_misses']                 = \App\Memadmin\DataAnalysis::hitResize($stats['delete_misses']);
         } else {
             $stats['delete_misses']                 = 'N/A on' . $stats['version'];
         }
@@ -160,19 +166,19 @@ class ServerController extends Royalcms\Component\Routing\Controller
         }
 
         if (isset($stats['cas_hits'])) {
-            $stats['cas_hits']                      = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['cas_hits']);
+            $stats['cas_hits']                      = \App\Memadmin\DataAnalysis::hitResize($stats['cas_hits']);
         } else {
             $stats['cas_hits']                      = 'N/A on' . $stats['version'];
         }
 
         if (isset($stats['cas_misses'])) {
-            $stats['cas_misses']                    = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['cas_misses']);
+            $stats['cas_misses']                    = \App\Memadmin\DataAnalysis::hitResize($stats['cas_misses']);
         } else {
             $stats['cas_misses']                    = 'N/A on' . $stats['version'];
         }
 
         if (isset($stats['cas_badval'])) {
-            $stats['cas_badval']                    = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['cas_badval']);
+            $stats['cas_badval']                    = \App\Memadmin\DataAnalysis::hitResize($stats['cas_badval']);
         } else {
             $stats['cas_badval']                    = 'N/A on' . $stats['version'];
         }
@@ -184,13 +190,13 @@ class ServerController extends Royalcms\Component\Routing\Controller
         }
 
         if (isset($stats['incr_hits'])) {
-            $stats['incr_hits']                     = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['incr_hits']);
+            $stats['incr_hits']                     = \App\Memadmin\DataAnalysis::hitResize($stats['incr_hits']);
         } else {
             $stats['incr_hits']                     = 'N/A on' . $stats['version'];
         }
 
         if (isset($stats['incr_hits'])) {
-            $stats['incr_misses']                   = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['incr_misses']);
+            $stats['incr_misses']                   = \App\Memadmin\DataAnalysis::hitResize($stats['incr_misses']);
         } else {
             $stats['incr_misses']                   = 'N/A on' . $stats['version'];
         }
@@ -202,13 +208,13 @@ class ServerController extends Royalcms\Component\Routing\Controller
         }
 
         if (isset($stats['decr_hits'])) {
-            $stats['decr_hits']                     = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['decr_hits']);
+            $stats['decr_hits']                     = \App\Memadmin\DataAnalysis::hitResize($stats['decr_hits']);
         } else {
             $stats['decr_hits']                     = 'N/A on' . $stats['version'];
         }
 
         if (isset($stats['decr_misses'])) {
-            $stats['decr_misses']                   = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['decr_misses']);
+            $stats['decr_misses']                   = \App\Memadmin\DataAnalysis::hitResize($stats['decr_misses']);
         } else {
             $stats['decr_misses']                   = 'N/A on' . $stats['version'];
         }
@@ -220,13 +226,13 @@ class ServerController extends Royalcms\Component\Routing\Controller
         }
 
         if (isset($stats['touch_hits'])) {
-            $stats['touch_hits']                    = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['touch_hits']);
+            $stats['touch_hits']                    = \App\Memadmin\DataAnalysis::hitResize($stats['touch_hits']);
         } else {
             $stats['touch_hits']                    = 'N/A on' . $stats['version'];
         }
 
         if (isset($stats['touch_misses'])) {
-            $stats['touch_misses']                  = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['touch_misses']);
+            $stats['touch_misses']                  = \App\Memadmin\DataAnalysis::hitResize($stats['touch_misses']);
         } else {
             $stats['touch_misses']                  = 'N/A on' . $stats['version'];
         }
@@ -238,7 +244,7 @@ class ServerController extends Royalcms\Component\Routing\Controller
         }
 
         if (isset($stats['cmd_flush'])) {
-            $stats['cmd_flush']                     = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['cmd_flush']);
+            $stats['cmd_flush']                     = \App\Memadmin\DataAnalysis::hitResize($stats['cmd_flush']);
         } else {
             $stats['cmd_flush']                     = 'N/A on' . $stats['version'];
         }
@@ -250,19 +256,19 @@ class ServerController extends Royalcms\Component\Routing\Controller
         }
 
         if (isset($stats['listen_disabled_num'])) {
-            $stats['listen_disabled_num']           = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['listen_disabled_num']);
+            $stats['listen_disabled_num']           = \App\Memadmin\DataAnalysis::hitResize($stats['listen_disabled_num']);
         } else {
             $stats['listen_disabled_num']           = 'N/A on' . $stats['version'];
         }
 
         if (isset($settings['oldest'])) {
-            $stats['oldest']                        = Ecjia\App\Memadmin\DataAnalysis::uptime($settings['oldest']);
+            $stats['oldest']                        = \App\Memadmin\DataAnalysis::uptime($settings['oldest']);
         } else {
             $stats['oldest']                        = 'N/A on' . $stats['version'];
         }
 
         if (isset($stats['reclaimed'])) {
-            $stats['reclaimed']                     = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['reclaimed']);
+            $stats['reclaimed']                     = \App\Memadmin\DataAnalysis::hitResize($stats['reclaimed']);
         } else {
             $stats['reclaimed']                     = 'N/A on' . $stats['version'];
         }
@@ -274,13 +280,13 @@ class ServerController extends Royalcms\Component\Routing\Controller
         }
 
         if (isset($stats['expired_unfetched'])) {
-            $stats['expired_unfetched']             = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['expired_unfetched']);
+            $stats['expired_unfetched']             = \App\Memadmin\DataAnalysis::hitResize($stats['expired_unfetched']);
         } else {
             $stats['expired_unfetched']             = 'N/A on' . $stats['version'];
         }
 
         if (isset($stats['evicted_unfetched'])) {
-            $stats['evicted_unfetched']             = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['evicted_unfetched']);
+            $stats['evicted_unfetched']             = \App\Memadmin\DataAnalysis::hitResize($stats['evicted_unfetched']);
         } else {
             $stats['evicted_unfetched']             = 'N/A on' . $stats['version'];
         }
@@ -296,7 +302,7 @@ class ServerController extends Royalcms\Component\Routing\Controller
         }
 
         if (isset($settings['maxbytes'])) {
-            $stats['maxbytes']                      = Ecjia\App\Memadmin\DataAnalysis::byteResize($settings['maxbytes']) . 'Bytes';
+            $stats['maxbytes']                      = \App\Memadmin\DataAnalysis::byteResize($settings['maxbytes']) . 'Bytes';
         } else {
             $stats['maxbytes']                      = 'N/A on' . $stats['version'];
         }
@@ -386,13 +392,13 @@ class ServerController extends Royalcms\Component\Routing\Controller
         }
 
         if (isset($stats['hash_power_level'])) {
-            $stats['hash_power_level']              = Ecjia\App\Memadmin\DataAnalysis::byteResize($stats['hash_power_level']) . 'Bytes';
+            $stats['hash_power_level']              = \App\Memadmin\DataAnalysis::byteResize($stats['hash_power_level']) . 'Bytes';
         } else {
             $stats['hash_power_level']              = 'N/A on' . $stats['version'];
         }
 
         if (isset($stats['hash_bytes'])) {
-            $stats['hash_bytes']                    = Ecjia\App\Memadmin\DataAnalysis::byteResize($stats['hash_bytes']) . 'Bytes';
+            $stats['hash_bytes']                    = \App\Memadmin\DataAnalysis::byteResize($stats['hash_bytes']) . 'Bytes';
         } else {
             $stats['hash_bytes']                    = 'N/A on' . $stats['version'];
         }
@@ -408,7 +414,7 @@ class ServerController extends Royalcms\Component\Routing\Controller
         }
 
         if (isset($stats['slabs_moved'])) {
-            $stats['slabs_moved']                   = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['slabs_moved']);
+            $stats['slabs_moved']                   = \App\Memadmin\DataAnalysis::hitResize($stats['slabs_moved']);
         } else {
             $stats['slabs_moved']                   = 'N/A on ' . $stats['version'];
         }
@@ -423,25 +429,25 @@ class ServerController extends Royalcms\Component\Routing\Controller
             $stats['slab_reassign_running']         = 'N/A on ' . $stats['version'];
         }
 
-        $stats['get_hits']              = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['get_hits']);
-        $stats['get_misses']            = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['get_misses']);
-        $stats['cmd_set']               = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['cmd_set']);
-        $stats['uptime']                = Ecjia\App\Memadmin\DataAnalysis::uptime($stats['uptime']);
-        $stats['total_connections']     = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['total_connections']);
-        $stats['curr_items']            = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['curr_items']);
-        $stats['total_items']           = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['total_items']);
-        $stats['evictions']             = Ecjia\App\Memadmin\DataAnalysis::hitResize($stats['evictions']);
-        $stats['bytes_read']            = Ecjia\App\Memadmin\DataAnalysis::byteResize($stats['bytes_read']);
-        $stats['bytes_written']         = Ecjia\App\Memadmin\DataAnalysis::byteResize($stats['bytes_written']);
+        $stats['get_hits']              = \App\Memadmin\DataAnalysis::hitResize($stats['get_hits']);
+        $stats['get_misses']            = \App\Memadmin\DataAnalysis::hitResize($stats['get_misses']);
+        $stats['cmd_set']               = \App\Memadmin\DataAnalysis::hitResize($stats['cmd_set']);
+        $stats['uptime']                = \App\Memadmin\DataAnalysis::uptime($stats['uptime']);
+        $stats['total_connections']     = \App\Memadmin\DataAnalysis::hitResize($stats['total_connections']);
+        $stats['curr_items']            = \App\Memadmin\DataAnalysis::hitResize($stats['curr_items']);
+        $stats['total_items']           = \App\Memadmin\DataAnalysis::hitResize($stats['total_items']);
+        $stats['evictions']             = \App\Memadmin\DataAnalysis::hitResize($stats['evictions']);
+        $stats['bytes_read']            = \App\Memadmin\DataAnalysis::byteResize($stats['bytes_read']);
+        $stats['bytes_written']         = \App\Memadmin\DataAnalysis::byteResize($stats['bytes_written']);
 
         /* Fixing issue 163, some results from stats slabs mem_requested are buggy @FIXME   */
         if ($slabs['total_malloced'] > $stats['limit_maxbytes']) {
             $slabs['total_wasted']      = $stats['limit_maxbytes'] - ($slabs['total_malloced'] - $slabs['total_wasted']);
             $slabs['total_malloced']    = $stats['limit_maxbytes'];
         }
-        $stats['total_malloced']        = Ecjia\App\Memadmin\DataAnalysis::byteResize($slabs['total_malloced']);
-        $stats['limit_maxbytes']        = Ecjia\App\Memadmin\DataAnalysis::byteResize($stats['limit_maxbytes']);
-        $stats['total_wasted']          = Ecjia\App\Memadmin\DataAnalysis::byteResize($slabs['total_wasted']);
+        $stats['total_malloced']        = \App\Memadmin\DataAnalysis::byteResize($slabs['total_malloced']);
+        $stats['limit_maxbytes']        = \App\Memadmin\DataAnalysis::byteResize($stats['limit_maxbytes']);
+        $stats['total_wasted']          = \App\Memadmin\DataAnalysis::byteResize($slabs['total_wasted']);
     }
 
 
@@ -449,14 +455,14 @@ class ServerController extends Royalcms\Component\Routing\Controller
     public function slabs()
     {
         /* Loading ini file */
-        $_ini           = Ecjia\App\Memadmin\ConfigurationLoader::singleton();
+        $_ini           = \App\Memadmin\ConfigurationLoader::singleton();
 
-        $memAdmin       = new Ecjia\App\Memadmin\MemcacheManager();
-        $cluster        = royalcms('request')->input('cluster', Ecjia\App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $memAdmin       = new \App\Memadmin\MemcacheManager();
+        $cluster        = royalcms('request')->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
         $server         = royalcms('request')->input('server');
 //dd($cluster);
-        $cluster_list   = Ecjia\App\Memadmin\DataAnalysis::server_clusterSelect('slab_select', $cluster, $server, 'btn list', 'onchange="changeServerSlab(this)"');
-        $clusterlists               = Ecjia\App\Memadmin\MemcacheServer::singleton()->getAllClusters();
+        $cluster_list   = \App\Memadmin\DataAnalysis::server_clusterSelect('slab_select', $cluster, $server, 'btn list', 'onchange="changeServerSlab(this)"');
+        $clusterlists   = \App\Memadmin\MemcacheServer::singleton()->getAllClusters();
 
         /* Ask for one server and one slabs items */
         if (isset($server) && ($serverinfo = $_ini->server($server))) {
@@ -465,21 +471,21 @@ class ServerController extends Royalcms\Component\Routing\Controller
 
         /* Items are well formed */
         if ($slabs !== false) {
-            $slabs              = Ecjia\App\Memadmin\DataAnalysis::slabs($slabs);
-            $total_malloced     = Ecjia\App\Memadmin\DataAnalysis::byteResize($slabs['total_malloced']) . Bytes;
-            $total_wasted       = Ecjia\App\Memadmin\DataAnalysis::byteResize($slabs['total_wasted']) . Bytes;
-            $chunk_size         = Ecjia\App\Memadmin\DataAnalysis::byteResize($slabs['chunk_size']) . Bytes;
+            $slabs              = \App\Memadmin\DataAnalysis::slabs($slabs);
+            $total_malloced     = \App\Memadmin\DataAnalysis::byteResize($slabs['total_malloced']) . Bytes;
+            $total_wasted       = \App\Memadmin\DataAnalysis::byteResize($slabs['total_wasted']) . Bytes;
+            $chunk_size         = \App\Memadmin\DataAnalysis::byteResize($slabs['chunk_size']) . Bytes;
             $active_slabs       = $slabs['active_slabs'];
             /* Showing items */
             foreach ($slabs as $id => $slab) {
-                $slabs[$id]['chunk_size']                   = Ecjia\App\Memadmin\DataAnalysis::byteResize($slab['chunk_size']) . Bytes;
-                $slabs[$id]['used_chunks']                  = Ecjia\App\Memadmin\DataAnalysis::hitResize($slab['used_chunks']);
-                $slabs[$id]['total_chunks']                 = Ecjia\App\Memadmin\DataAnalysis::hitResize($slab['total_chunks']);
-                $slabs[$id]['used_chunks_total_chunks']     = Ecjia\App\Memadmin\DataAnalysis::valueResize($slab['used_chunks'] / $slab['total_chunks'] * 100) . '%';
-                $slabs[$id]['mem_wasted']                   = Ecjia\App\Memadmin\DataAnalysis::byteResize($slab['mem_wasted']) . Bytes;
-                $slabs[$id]['request_rate']                 = ($slab['request_rate'] > 999) ? Library_Data_Analysis::hitResize($slab['request_rate']) : $slab['request_rate'] . Request / sec;
+                $slabs[$id]['chunk_size']                   = \App\Memadmin\DataAnalysis::byteResize($slab['chunk_size']) . Bytes;
+                $slabs[$id]['used_chunks']                  = \App\Memadmin\DataAnalysis::hitResize($slab['used_chunks']);
+                $slabs[$id]['total_chunks']                 = \App\Memadmin\DataAnalysis::hitResize($slab['total_chunks']);
+                $slabs[$id]['used_chunks_total_chunks']     = \App\Memadmin\DataAnalysis::valueResize($slab['used_chunks'] / $slab['total_chunks'] * 100) . '%';
+                $slabs[$id]['mem_wasted']                   = \App\Memadmin\DataAnalysis::byteResize($slab['mem_wasted']) . Bytes;
+                $slabs[$id]['request_rate']                 = ($slab['request_rate'] > 999) ? \App\Memadmin\DataAnalysis::hitResize($slab['request_rate']) : $slab['request_rate'] . Request / sec;
                 $slabs[$id]['items_evicted']                = isset($slab['items:evicted']) ? $slab['items:evicted'] : 'N/A';
-                $slabs[$id]['uptime_items_evicted']         = Ecjia\App\Memadmin\DataAnalysis::uptime($slab['items:evicted']);
+                $slabs[$id]['uptime_items_evicted']         = \App\Memadmin\DataAnalysis::uptime($slab['items:evicted']);
             };
 
             $this->view->assign('cluster_list',       $cluster_list);
@@ -518,16 +524,16 @@ class ServerController extends Royalcms\Component\Routing\Controller
         $this->view->assign('command_url', RC_Uri::url('memadmin/server/execute_command/'));
 
         /* Loading ini file */
-        $_ini           = Ecjia\App\Memadmin\ConfigurationLoader::singleton();
-        $_config        = Ecjia\App\Memadmin\MemcacheMonitorConfig::singleton();
+        $_ini           = \App\Memadmin\ConfigurationLoader::singleton();
+        $_config        = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
         $get_slab       = royalcms('request')->input('slab');
-        $cluster        = royalcms('request')->input('cluster', Ecjia\App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $cluster        = royalcms('request')->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
         $server         = royalcms('request')->input('server');
 
         $items          = false;
 
-        $memAdmin       = new Ecjia\App\Memadmin\MemcacheManager();
+        $memAdmin       = new \App\Memadmin\MemcacheManager();
 
         /* Ask for one server and one slabs items */
         $serverinfo     = $_ini->server($server);
@@ -540,8 +546,8 @@ class ServerController extends Royalcms\Component\Routing\Controller
             /* Showing items */
             $max_item_dump      = $_config->get('max_item_dump');
             foreach ($items as $key => $data) {
-                $items[$key]['size']     = Ecjia\App\Memadmin\DataAnalysis::byteResize($data[0]) . Bytes;
-                $items[$key]['uptime']     = Ecjia\App\Memadmin\DataAnalysis::uptime($data[1] - time());
+                $items[$key]['size']     = \App\Memadmin\DataAnalysis::byteResize($data[0]) . Bytes;
+                $items[$key]['uptime']   = \App\Memadmin\DataAnalysis::uptime($data[1] - time());
                 $items[$key]['format_key'] = (strlen($key) > 70) ? substr($key, 0, 70) . '[..]' : $key;
             }
 
@@ -567,16 +573,16 @@ class ServerController extends Royalcms\Component\Routing\Controller
 
     public function execute_command()
     {
-        $_ini               = Ecjia\App\Memadmin\ConfigurationLoader::singleton();
-        $_config            = Ecjia\App\Memadmin\MemcacheMonitorConfig::singleton();
+        $_ini               = \App\Memadmin\ConfigurationLoader::singleton();
+        $_config            = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
         $request_server     = royalcms('request')->input('request_server');
         $server             = $_ini->server($request_server);
         $request_api        = $_config->get('get_api');
         $request_key        = UrlDecode(royalcms('request')->input('request_key'));
-        $memAdmin           = new Ecjia\App\Memadmin\MemcacheCommand();
+        $memAdmin           = new \App\Memadmin\MemcacheCommand();
         $data               = $memAdmin->switchServer($server['hostname'], $server['port'], $request_api)->get($request_key);
-        $content            = Ecjia\App\Memadmin\DataAnalysis::serverResponse($server['hostname'], $server['port'], $data);
+        $content            = \App\Memadmin\DataAnalysis::serverResponse($server['hostname'], $server['port'], $data);
 
 //        return $this->displayContent($content);
         echo $content;
