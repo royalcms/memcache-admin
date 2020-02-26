@@ -22,7 +22,6 @@
         "royalcms/gettext": "dev-master",
         "royalcms/hook": "dev-master",
         "royalcms/http-request": "dev-master",
-        "royalcms/kses": "dev-master",
         "royalcms/memcache": "dev-master",
         "royalcms/native-session": "dev-master",
         "royalcms/package": "dev-master",
@@ -39,7 +38,6 @@
         "royalcms/uploader": "dev-master",
         "royalcms/url": "dev-master",
         "royalcms/uuid": "dev-master",
-        "royalcms/whoops": "dev-master",
         "laravel/framework": "^6.0"
     },
     "require-dev": {
