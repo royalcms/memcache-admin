@@ -5,7 +5,7 @@ define('APP_VERSION', '3.0');
 
 RC_Session::start();
 
-class commandController extends Royalcms\Component\Routing\Controller
+class CommandController extends Royalcms\Component\Routing\Controller
 {
 
     protected $view;

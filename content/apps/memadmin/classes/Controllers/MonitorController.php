@@ -5,7 +5,7 @@ define('APP_VERSION', '2.0');
 
 RC_Session::start();
 
-class monitorController extends Royalcms\Component\Routing\Controller
+class MonitorController extends Royalcms\Component\Routing\Controller
 {
 
     protected $view;
