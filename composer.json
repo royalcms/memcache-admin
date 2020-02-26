@@ -1,0 +1,82 @@
+{
+    "name": "royalcms/memcache-adminsss",
+    "type": "project",
+    "description": "The Memcache Admin for Royalcms Framework.",
+    "keywords": [
+        "royalcms",
+        "framework",
+        "laravel",
+        "memcache",
+        "admin"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "royalcms/app": "dev-master",
+        "royalcms/datetime": "dev-master",
+        "royalcms/default-route": "dev-master",
+        "royalcms/enum": "dev-master",
+        "royalcms/environment": "dev-master",
+        "royalcms/error": "dev-master",
+        "royalcms/framework": "dev-master",
+        "royalcms/gettext": "dev-master",
+        "royalcms/hook": "dev-master",
+        "royalcms/http-request": "dev-master",
+        "royalcms/kses": "dev-master",
+        "royalcms/memcache": "dev-master",
+        "royalcms/native-session": "dev-master",
+        "royalcms/package": "dev-master",
+        "royalcms/page": "dev-master",
+        "royalcms/plugin": "dev-master",
+        "royalcms/purifier": "dev-master",
+        "royalcms/requests": "dev-master",
+        "royalcms/script": "dev-master",
+        "royalcms/sentry": "dev-master",
+        "royalcms/tail": "dev-master",
+        "royalcms/theme": "dev-master",
+        "royalcms/timer": "dev-master",
+        "royalcms/upload": "dev-master",
+        "royalcms/uploader": "dev-master",
+        "royalcms/url": "dev-master",
+        "royalcms/uuid": "dev-master",
+        "royalcms/whoops": "dev-master",
+        "laravel/framework": "^6.0"
+    },
+    "require-dev": {
+        "royalcms/ide-helper": "dev-master",
+        "filp/whoops": "^2.4",
+        "fzaninotto/faker": "^1.4"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+
+    },
+    "autoload": {
+        "psr-4": {
+
+        },
+        "classmap": [
+
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Royalcms\\Component\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php royalcms package:discover --ansi",
+            "@php royalcms package:app-discover --ansi"
+        ]
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
+    }
+
+}
