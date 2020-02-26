@@ -18,8 +18,6 @@ class server extends Royalcms\Component\Routing\Controller
         header('Cache-Control: no-cache, must-revalidate');
         header('Pragma: no-cache');
 
-        define('API_DEBUG', false);
-
         $this->view = royalcms('view')->getSmarty();
         // 模板目录
         $this->view->setTemplateDir(SITE_THEME_PATH . RC_Theme::get_template() . DIRECTORY_SEPARATOR);
