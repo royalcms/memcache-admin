@@ -1,0 +1,248 @@
+
+.memcache input,select,textarea {
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #AAA;
+    width: 298px;
+    font-family: Tahoma;
+    font-size: 1em;
+}
+
+.memcache textarea {
+    width: 494px;
+    resize: none;
+}
+
+.memcache select {
+    width: 300px;
+}
+
+.memcache input:focus,textarea:focus {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #EEE;
+}
+
+.memcache input:hover {
+    color: #A00;
+}
+.memcache input[type=submit] {
+    cursor: pointer;
+}
+
+.memcache img {
+    border: none;
+}
+/** hr */
+.memcache hr {
+    height: 0;
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #EEE;
+    margin: inherit;
+}
+
+.memcache .menu {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #a0312a;
+    color: #eee;
+    width: 198px;
+}
+
+.memcache .item {
+    font-family: "Bitstream Vera Sans Mono",
+    "Lucida Sans Typewriter",
+    "DejaVu Sans Mono",
+    Consolas,
+    "Andale Mono",
+    "Lucida Console",
+    "Liberation Mono",
+    "Nimbus Mono L",
+    Monaco,
+    "Courier New",
+    Courier,
+    monospace;
+    cursor: hand;
+}
+
+.memcache .loading {
+    text-decoration: blink;
+    visibility: hidden;
+}
+
+.memcache .full-size {
+    width: auto;
+}
+
+.memcache .size-0 {
+    width: 494px;
+}
+
+.memcache .size-1 {
+    width: 696px;
+}
+
+.memcache .size-2 {
+    width: 40%;
+}
+
+.memcache .size-4 {
+    width: 29%;
+}
+
+.memcache .size-5 {
+    width: 226px;
+}
+
+.memcache .padding {
+    padding: 3px 7px 3px 7px;
+}
+
+.memcache .corner {
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.memcache .header {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #9c3c36;
+    background: #B5463F;
+    font-weight: bold;
+    color: #fff;
+    clear: both
+}
+
+.memcache .sub-header {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #514845;
+    background: #635855;
+    font-weight: bold;
+    color: #fff;
+    clear: both;
+    margin-top: 10px
+}
+
+.memcache .container {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d0d0d0;
+    background: #ebebeb;
+    font-weight: none;
+    color: #000;
+    margin-top: 1px;
+    clear: both;
+    width:auto !important;
+}
+
+.memcache .list {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #9c3c36;
+    background: #B5463F;
+    font-weight: bold;
+    color: #fff
+}
+
+.memcache .button {
+    padding: 1px 20px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px
+}
+
+.memcache .live {
+    font-family: "Bitstream Vera Sans Mono",
+    "Lucida Sans Typewriter",
+    "DejaVu Sans Mono",
+    Consolas,
+    "Andale Mono",
+    "Lucida Console",
+    "Liberation Mono",
+    "Nimbus Mono L",
+    Monaco,
+    "Courier New",
+    Courier,
+    monospace;
+    font-size: 14px;
+    overflow: visible;
+    background-color: #ffffff;
+    white-space: pre-wrap
+}
+
+.memcache .line {
+    min-height: 18px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    clear: both
+}
+
+.memcache .left {
+    float: left;
+    min-width: 126px;
+    font-weight: bold
+}
+.memcache .right {
+    float: right
+}
+.memcache .setting {
+    min-width: 180px
+}
+
+.memcache .slabs {
+    min-width: 104px
+}
+.memcache .help {
+    cursor:help;
+}
+
+.memcache .container hr {
+    height: 0;
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #fff;
+}
+
+.memcache .grey {
+    color: #EEE
+}
+
+.memcache .green {
+    color: #40aaba
+}
+
+.memcache .red {
+    background: #b5463f;
+    color: #fff;
+    font-weight: bold
+}
+.memcache pre {
+    display: block !important;
+    padding: 0px !important;
+    margin: 1em 0px !important;
+    font-size: 14px !important;
+    line-height: 100% !important;
+    word-break: break-all !important;
+    word-wrap: break-word !important;
+    white-space: pre !important;
+    white-space: pre-wrap !important;
+    background-color: #ffffff !important;
+    border: 0 solid #ccc !important;
+    border: 0 solid rgba(0,0,0,0.15) !important;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    border-radius: 4px !important;
+}
+@media (max-width: 1230px){
+    .memcache pre {
+        font-size: 11px !important;
+    }
+}
