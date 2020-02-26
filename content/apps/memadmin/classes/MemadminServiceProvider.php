@@ -1,6 +1,6 @@
 <?php
 
-namespace Ecjia\App\Memadmin;
+namespace App\Memadmin;
 
 use Royalcms\Component\App\AppParentServiceProvider;
 
@@ -9,7 +9,7 @@ class MemadminServiceProvider extends  AppParentServiceProvider
     
     public function boot()
     {
-        $this->package('ecjia/app-memadmin');
+        $this->package('royalcms/app-memadmin');
     }
     
     public function register()

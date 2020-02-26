@@ -1,6 +1,6 @@
 <?php
 
-namespace Ecjia\App\Memadmin;
+namespace App\Memadmin;
 
 use Royalcms\Component\Foundation\RoyalcmsObject;
 use RC_Session;

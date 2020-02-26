@@ -1,7 +1,7 @@
 <?php
 
 define('APP_NAME', 'MEMADMIN');
-define('APP_VERSION', '2.0');
+define('APP_VERSION', '3.0');
 
 RC_Session::start();
 

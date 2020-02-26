@@ -1,6 +1,6 @@
 <?php
 
-namespace Ecjia\App\Memadmin;
+namespace App\Memadmin;
 
 class MemcacheManager
 {
