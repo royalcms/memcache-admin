@@ -31,11 +31,10 @@
         "royalcms/requests": "dev-master",
         "royalcms/script": "dev-master",
         "royalcms/sentry": "dev-master",
+        "royalcms/smarty-view": "^5.2",
         "royalcms/tail": "dev-master",
         "royalcms/theme": "dev-master",
         "royalcms/timer": "dev-master",
-        "royalcms/upload": "dev-master",
-        "royalcms/uploader": "dev-master",
         "royalcms/url": "dev-master",
         "royalcms/uuid": "dev-master",
         "laravel/framework": "^6.0"
