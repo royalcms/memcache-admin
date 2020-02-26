@@ -6,7 +6,7 @@
  * Time: 09:50
  */
 
-namespace Ecjia\Kernel\Http\Middleware;
+namespace Kernel\Http\Middleware;
 
 use Closure;
 

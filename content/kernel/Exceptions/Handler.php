@@ -1,6 +1,6 @@
 <?php
 
-namespace Ecjia\Kernel\Exceptions;
+namespace Kernel\Exceptions;
 
 use Exception;
 use Royalcms\Component\Exception\Handler as ExceptionHandler;

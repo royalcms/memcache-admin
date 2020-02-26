@@ -1,6 +1,6 @@
 <?php
 
-namespace Ecjia\Kernel\Http\Controllers;
+namespace Kernel\Http\Controllers;
 
 
 class HealthCheckController

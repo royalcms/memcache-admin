@@ -1,6 +1,6 @@
 <?php
 
-namespace Ecjia\Kernel\Http\Middleware;
+namespace Kernel\Http\Middleware;
 
 use Royalcms\Component\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 

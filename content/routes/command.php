@@ -60,18 +60,7 @@
  * add hook to init
  */
 RC_Hook::add_action('console_init', function () {
-
-    collect(ecjia_app::installed_app_floders())->each(function($app) {
-        //loading hooks
-        RC_Loader::load_app_class('hooks.console_' . $app, $app, false);
-
-        //loading subscriber
-        $bundle = royalcms('app')->driver($app);
-        $class = $bundle->getNamespace() . '\Subscribers\ConsoleHookSubscriber';
-        if (class_exists($class)) {
-            royalcms('Royalcms\Component\Hook\Dispatcher')->subscribe($class);
-        }
-    });
+    //@todo handleAppConsoleHookSubscriber()
 });
 
 /**
