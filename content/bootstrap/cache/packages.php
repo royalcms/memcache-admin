@@ -151,6 +151,17 @@
       'RC_Timer' => 'Royalcms\\Component\\Timer\\Facades\\Timer',
     ),
   ),
+  'facade/ignition' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Facade\\Ignition\\IgnitionServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Flare' => 'Facade\\Ignition\\Facades\\Flare',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
