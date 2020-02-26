@@ -134,6 +134,7 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
         'C' => 
         array (
             'Cron\\' => 5,
+            'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
         ),
     );
@@ -419,6 +420,10 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'ClassPreloader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/classpreloader/classpreloader/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -488,6 +493,23 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'ClassPreloader\\ClassLoader' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/ClassLoader.php',
+        'ClassPreloader\\ClassLoader\\ClassList' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/ClassLoader/ClassList.php',
+        'ClassPreloader\\ClassLoader\\ClassNode' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/ClassLoader/ClassNode.php',
+        'ClassPreloader\\ClassLoader\\Config' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/ClassLoader/Config.php',
+        'ClassPreloader\\CodeGenerator' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/CodeGenerator.php',
+        'ClassPreloader\\Exception\\DirConstantException' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Exception/DirConstantException.php',
+        'ClassPreloader\\Exception\\FileConstantException' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Exception/FileConstantException.php',
+        'ClassPreloader\\Exception\\IOException' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Exception/IOException.php',
+        'ClassPreloader\\Exception\\StrictTypesException' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Exception/StrictTypesException.php',
+        'ClassPreloader\\Exception\\VisitorExceptionInterface' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Exception/VisitorExceptionInterface.php',
+        'ClassPreloader\\File\\FileUtils' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/File/FileUtils.php',
+        'ClassPreloader\\OutputWriter' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/OutputWriter.php',
+        'ClassPreloader\\Parser\\AbstractNodeVisitor' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/AbstractNodeVisitor.php',
+        'ClassPreloader\\Parser\\DirVisitor' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/DirVisitor.php',
+        'ClassPreloader\\Parser\\FileVisitor' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/FileVisitor.php',
+        'ClassPreloader\\Parser\\NodeTraverser' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/NodeTraverser.php',
+        'ClassPreloader\\Parser\\StrictTypesVisitor' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/StrictTypesVisitor.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
