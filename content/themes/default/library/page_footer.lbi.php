@@ -6,13 +6,12 @@
         <div class="col">
             <footer class=" text-center">
                 <div class="footer-level2">
-                    <p>Powered By ECJIA TEAM</p>
+                    <p>Powered By ROYALCMS TEAM</p>
                 </div>
             </footer>
         </div>
     </div>
 </div>
-
 
 {literal}
 <script>
