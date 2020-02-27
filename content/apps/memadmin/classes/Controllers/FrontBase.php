@@ -15,9 +15,16 @@ class FrontBase extends BaseController
 
     protected $view;
 
+    /**
+     * @var \Royalcms\Component\Http\Request
+     */
+    protected $request;
+
     public function __construct()
     {
         $this->__FILE__ = dirname(dirname(__FILE__));
+
+        $this->request = royalcms('request');
 
         $this->registerViewServiceProvider();
 

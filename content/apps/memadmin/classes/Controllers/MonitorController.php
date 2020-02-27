@@ -29,7 +29,7 @@ class MonitorController extends FrontBase
         /* Loading ini file */
         $_ini = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
-        $cluster                = royalcms('request')->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $cluster                = $this->request->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
 
         $serverlists            = \App\Memadmin\MemcacheServer::singleton()->getAllServers($cluster);
 
@@ -102,7 +102,7 @@ class MonitorController extends FrontBase
     public function data()
     {
         /* Initializing requests */
-        $cluster                = royalcms('request')->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $cluster                = $this->request->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
 
         /* Loading ini file */
         $_ini                   = \App\Memadmin\MemcacheMonitorConfig::singleton();
@@ -277,10 +277,10 @@ class MonitorController extends FrontBase
     {
         $config = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
-        $refresh_rate           = royalcms('request')->input('refresh_rate');
-        $memory_alert           = royalcms('request')->input('memory_alert');
-        $hit_rate_alert         = royalcms('request')->input('hit_rate_alert');
-        $eviction_alert         = royalcms('request')->input('eviction_alert');
+        $refresh_rate           = $this->request->input('refresh_rate');
+        $memory_alert           = $this->request->input('memory_alert');
+        $hit_rate_alert         = $this->request->input('hit_rate_alert');
+        $eviction_alert         = $this->request->input('eviction_alert');
 
         $config->set('refresh_rate',    round(max(5, $refresh_rate)));
         $config->set('memory_alert',    $memory_alert);
@@ -300,8 +300,8 @@ class MonitorController extends FrontBase
     {
         $config = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
-        $connection_timeout     = royalcms('request')->input('connection_timeout');
-        $max_item_dump          = royalcms('request')->input('max_item_dump');
+        $connection_timeout     = $this->request->input('connection_timeout');
+        $max_item_dump          = $this->request->input('max_item_dump');
 
         $config->set('connection_timeout',  $connection_timeout);
         $config->set('max_item_dump',       $max_item_dump);

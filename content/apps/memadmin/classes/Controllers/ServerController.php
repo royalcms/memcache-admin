@@ -25,8 +25,8 @@ class ServerController extends FrontBase
         /* Loading ini file */
         $_ini                       = \App\Memadmin\ConfigurationLoader::singleton();
 
-        $cluster                    = royalcms('request')->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
-        $server                     = royalcms('request')->input('server');
+        $cluster                    = $this->request->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $server                     = $this->request->input('server');
 
         $cluster_list               = \App\Memadmin\DataAnalysis::server_clusterSelect('server_select', $cluster, $server, '', 'onchange="changeServer(this)"');
         $clusterlists               = \App\Memadmin\MemcacheServer::singleton()->getAllClusters();
@@ -508,9 +508,9 @@ class ServerController extends FrontBase
         $_ini           = \App\Memadmin\ConfigurationLoader::singleton();
         $_config        = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
-        $get_slab       = royalcms('request')->input('slab');
-        $cluster        = royalcms('request')->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
-        $server         = royalcms('request')->input('server');
+        $get_slab       = $this->request->input('slab');
+        $cluster        = $this->request->input('cluster', \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER);
+        $server         = $this->request->input('server');
 
         $items          = false;
 
@@ -557,10 +557,10 @@ class ServerController extends FrontBase
         $_ini               = \App\Memadmin\ConfigurationLoader::singleton();
         $_config            = \App\Memadmin\MemcacheMonitorConfig::singleton();
 
-        $request_server     = royalcms('request')->input('request_server');
+        $request_server     = $this->request->input('request_server');
         $server             = $_ini->server($request_server);
         $request_api        = $_config->get('get_api');
-        $request_key        = UrlDecode(royalcms('request')->input('request_key'));
+        $request_key        = UrlDecode($this->request->input('request_key'));
         $memAdmin           = new \App\Memadmin\MemcacheCommand();
         $data               = $memAdmin->switchServer($server['hostname'], $server['port'], $request_api)->get($request_key);
         $content            = \App\Memadmin\DataAnalysis::serverResponse($server['hostname'], $server['port'], $data);

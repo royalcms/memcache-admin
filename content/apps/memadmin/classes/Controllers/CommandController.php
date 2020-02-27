@@ -57,9 +57,9 @@ class CommandController extends FrontBase
 
     public function execute_command()
     {
-        $request            = royalcms('request')->input('request_command');
-        $request_api        = royalcms('request')->input('request_api');
-        $request_server     = royalcms('request')->input('request_server');
+        $request            = $this->request->input('request_command');
+        $request_api        = $this->request->input('request_api');
+        $request_server     = $this->request->input('request_server');
 
         $memAdmin = new \App\Memadmin\MemcacheCommand();
 
@@ -68,7 +68,7 @@ class CommandController extends FrontBase
             switch ($request) {
                 /* Memcache::get command */
                 case 'get' :
-                    $request_key    = royalcms('request')->input('request_key');
+                    $request_key    = $this->request->input('request_key');
 
                     with(new \App\Memadmin\MemcacheServer())->clusterSend($request_server, function($server) use ($request_api, $request_key, $memAdmin) {
                         if (empty($request_key)) {
@@ -87,9 +87,9 @@ class CommandController extends FrontBase
                 /* Memcache::set command */
                 case 'set' :
 
-                    $request_key        = royalcms('request')->input('request_key');
-                    $request_data       = royalcms('request')->input('request_data');
-                    $request_duration   = royalcms('request')->input('request_duration');
+                    $request_key        = $this->request->input('request_key');
+                    $request_data       = $this->request->input('request_data');
+                    $request_duration   = $this->request->input('request_duration');
 
                     with(new \App\Memadmin\MemcacheServer())->clusterSend($request_server, function($server) use ($request_api, $request_key, $request_data, $request_duration, $memAdmin) {
                         if (empty($request_key)) {
@@ -114,7 +114,7 @@ class CommandController extends FrontBase
                 /* Memcache::delete command */
                 case 'delete' :
 
-                    $request_key = royalcms('request')->input('request_key');
+                    $request_key = $this->request->input('request_key');
 
                     with(new \App\Memadmin\MemcacheServer())->clusterSend($request_server, function($server) use ($request_api, $request_key, $memAdmin) {
                         if (empty($request_key)) {
@@ -131,8 +131,8 @@ class CommandController extends FrontBase
 
                 /* Memcache::decrement command  */
                 case 'increment' :
-                    $request_key        = royalcms('request')->input('request_key');
-                    $request_value      = royalcms('request')->input('request_value');
+                    $request_key        = $this->request->input('request_key');
+                    $request_value      = $this->request->input('request_value');
 
                     with(new \App\Memadmin\MemcacheServer())->clusterSend($request_server, function($server) use ($request_api, $request_key, $request_value, $memAdmin) {
                         if (empty($request_key)) {
@@ -158,8 +158,8 @@ class CommandController extends FrontBase
 
                 /* Memcache::decrement command */
                 case 'decrement' :
-                    $request_key        = royalcms('request')->input('request_key');
-                    $request_value      = royalcms('request')->input('request_value');
+                    $request_key        = $this->request->input('request_key');
+                    $request_value      = $this->request->input('request_value');
 
                     with(new \App\Memadmin\MemcacheServer())->clusterSend($request_server, function($server) use ($request_api, $request_key, $request_value, $memAdmin) {
                         if (empty($request_key)) {
@@ -186,7 +186,7 @@ class CommandController extends FrontBase
                 /* Memcache::flush_all command  */
                 case 'flush_all' :
 
-                    $request_delay  = royalcms('request')->input('request_delay');
+                    $request_delay  = $this->request->input('request_delay');
 
                     with(new \App\Memadmin\MemcacheServer())->clusterSend($request_server, function($server) use ($request_api, $request_delay, $memAdmin) {
                         if (empty($request_delay)) {
@@ -220,8 +220,8 @@ class CommandController extends FrontBase
 
         $memAdmin           = new \App\Memadmin\MemcacheCommand();
 
-        $request_telnet     = royalcms('request')->input('request_telnet');
-        $request_server     = royalcms('request')->input('request_server');
+        $request_telnet     = $this->request->input('request_telnet');
+        $request_server     = $this->request->input('request_server');
 
         with(new \App\Memadmin\MemcacheServer())->clusterSend($request_server, function($server) use ($request_api, $request_telnet, $memAdmin) {
             if (empty($request_telnet)) {
@@ -241,10 +241,10 @@ class CommandController extends FrontBase
 
         $memAdmin           = new \App\Memadmin\MemcacheManager();
 
-        $request_key        = royalcms('request')->input('request_key');
-        $request_level      = royalcms('request')->input('request_level', false);
-        $request_more       = royalcms('request')->input('request_more', false);
-        $request_server     = royalcms('request')->input('request_server');
+        $request_key        = $this->request->input('request_key');
+        $request_level      = $this->request->input('request_level', false);
+        $request_more       = $this->request->input('request_more', false);
+        $request_server     = $this->request->input('request_server');
 
         with(new \App\Memadmin\MemcacheServer())->clusterSend($request_server, function($server) use ($request_api, $request_key, $request_level, $request_more, $memAdmin) {
             if (empty($request_key)) {

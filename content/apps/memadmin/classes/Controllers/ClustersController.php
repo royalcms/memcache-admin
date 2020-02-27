@@ -46,7 +46,7 @@ class ClustersController extends FrontBase
      */
     public function add_cluster()
     {
-        $newcluster     = royalcms('request')->input('newcluster');
+        $newcluster     = $this->request->input('newcluster');
 
         if( !empty($newcluster))
         {
@@ -67,7 +67,7 @@ class ClustersController extends FrontBase
      */
     public function remove_cluster()
     {
-        $cluster    = royalcms('request')->input('cluster');
+        $cluster    = $this->request->input('cluster');
 
         if ($cluster == \App\Memadmin\MemcacheServer::DEFAULT_CLUSTER) {
 //            return Ecjia\App\Memadmin\EcjiaController::showmessage('出错啦，默认集群不可以删除！', 0x20 | 0x00, array('pjaxurl' => RC_Uri::url('memadmin/clusters/init')));
@@ -95,8 +95,8 @@ class ClustersController extends FrontBase
      */
     public function save_servers()
     {
-        $cluster    = royalcms('request')->input('cluster');
-        $servers    = royalcms('request')->input('server');
+        $cluster    = $this->request->input('cluster');
+        $servers    = $this->request->input('server');
 
 //        if ($cluster == Ecjia\App\Memadmin\MemcacheServer::DEFAULT_CLUSTER) {
 //            return Ecjia\App\Memadmin\EcjiaController::showmessage('出错啦，默认集群不可以修改！', 0x20 | 0x00, array('pjaxurl' => RC_Uri::url('memadmin/clusters/init', ['cluster' => $cluster])));
