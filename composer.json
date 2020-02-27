@@ -12,6 +12,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "ext-json": "*",
         "royalcms/app": "dev-master",
         "royalcms/datetime": "dev-master",
         "royalcms/default-route": "dev-master",
