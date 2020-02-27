@@ -9,7 +9,7 @@ class ConfigurationLoader
 
     /**
      * Singleton
-     * @var unknown
+     * @var mixed
      */
     protected static $_instance = null;
 
@@ -36,7 +36,7 @@ class ConfigurationLoader
 
     /**
      * Storage
-     * @var unknown
+     * @var array
      */
     protected static $_ini = array();
 
@@ -89,8 +89,6 @@ class ConfigurationLoader
      *
      * @param String $key Key to set
      * @param Mixed $value Value to set
-     *
-     * @return Boolean
      */
     public function set($key, $value)
     {
@@ -136,7 +134,7 @@ class ConfigurationLoader
      *
      * @param String $cluster Cluster to retreive
      *
-     * @return Array
+     * @return array
      */
     public function cluster($cluster)
     {

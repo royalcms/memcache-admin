@@ -34,7 +34,7 @@ class MemcacheServer extends RoyalcmsObject
     /**
      * 添加集群
      * @param string $name
-     * @return \Ecjia\App\Memadmin\MemcacheServer
+     * @return \App\Memadmin\MemcacheServer
      */
     public function addCluster($name)
     {
@@ -50,7 +50,7 @@ class MemcacheServer extends RoyalcmsObject
     /**
      * 移除集群
      * @param string $name
-     * @return \Ecjia\App\Memadmin\MemcacheServer
+     * @return \App\Memadmin\MemcacheServer
      */
     public function removeCluster($name)
     {
@@ -68,7 +68,7 @@ class MemcacheServer extends RoyalcmsObject
      * @param string $host
      * @param string $port
      * @param string $cluster
-     * @return \Ecjia\App\Memadmin\MemcacheServer
+     * @return \App\Memadmin\MemcacheServer
      */
     public function addServer($host, $port, $cluster)
     {
@@ -88,7 +88,7 @@ class MemcacheServer extends RoyalcmsObject
      * @param string $host
      * @param string $port
      * @param string $cluster
-     * @return \Ecjia\App\Memadmin\MemcacheServer
+     * @return \App\Memadmin\MemcacheServer
      */
     public function removeServer($host, $port, $cluster)
     {
@@ -162,12 +162,12 @@ class MemcacheServer extends RoyalcmsObject
      *
      * @param String $cluster Cluster to retreive
      *
-     * @return Array
+     * @return array
      */
     public function cluster($cluster)
     {
         if (strtolower($cluster) == 'default') {
-            $servers = \RC_Config::get('memcache::config.servers');
+            $servers = config('memcache::config.servers');
             if (!empty($servers)) {
                 return $servers;
             }
@@ -182,11 +182,11 @@ class MemcacheServer extends RoyalcmsObject
      *
      * @param String $server Server to retreive
      *
-     * @return Array
+     * @return array
      */
     public function server($server)
     {
-        $servers = \RC_Config::get('memcache::config.servers');
+        $servers = config('memcache::config.servers');
 
         return array_get($servers, $server, array());
     }
@@ -210,7 +210,7 @@ class MemcacheServer extends RoyalcmsObject
         }
         /* Ask for get on all servers */
         else {
-            $servers = ['Default' => \RC_Config::get('memcache::config.servers')];
+            $servers = ['Default' => config('memcache::config.servers')];
 
             foreach ($servers as $cluster => $servers) {
                 /* Asking for each server stats */

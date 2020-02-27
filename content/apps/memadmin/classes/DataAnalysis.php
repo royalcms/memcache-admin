@@ -149,19 +149,19 @@ class DataAnalysis
     public static function cluster($cluster = null)
     {
         if (empty($cluster)) {
-            return \RC_Config::get('memecache::config.servers', []);
+            return config('memecache::config.servers', []);
         } else {
-            return \RC_Config::get('memecache::config.servers.' . servers, []);
+            return config('memecache::config.servers.' . servers, []);
         }
     }
 
     /**
      * Merge two arrays of stats from Command_XX::stats()
      *
-     * @param Array $array Statistic from Command_XX::stats()
-     * @param Array $stats Statistic from Command_XX::stats()
+     * @param array $array Statistic from Command_XX::stats()
+     * @param array $stats Statistic from Command_XX::stats()
      *
-     * @return Array
+     * @return array
      */
     public static function merge($array, $stats)
     {
@@ -186,10 +186,10 @@ class DataAnalysis
     /**
      * Diff two arrays of stats from Command_XX::stats()
      *
-     * @param Array $array Statistic from Command_XX::stats()
-     * @param Array $stats Statistic from Command_XX::stats()
+     * @param array $array Statistic from Command_XX::stats()
+     * @param array $stats Statistic from Command_XX::stats()
      *
-     * @return Array
+     * @return array
      */
     public static function diff($array, $stats)
     {
@@ -213,9 +213,9 @@ class DataAnalysis
     /**
      * Analyse and return memcache stats command
      *
-     * @param Array $stats Statistic from Command_XX::stats()
+     * @param array $stats Statistic from Command_XX::stats()
      *
-     * @return Array
+     * @return array|bool
      */
     public static function stats($stats)
     {
@@ -324,9 +324,9 @@ class DataAnalysis
     /**
      * Analyse and return memcache slabs command
      *
-     * @param Array $slabs Statistic from Command_XX::slabs()
+     * @param array $slabs Statistic from Command_XX::slabs()
      *
-     * @return Array
+     * @return array
      */
     public static function slabs($slabs)
     {

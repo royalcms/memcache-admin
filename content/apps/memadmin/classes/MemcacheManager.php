@@ -21,7 +21,7 @@ class MemcacheManager
      * Send stats command to server
      * Return the result if successful or false otherwise
      *
-     * @return Array|Boolean
+     * @return array|Boolean
      */
     public function getStats()
     {
@@ -32,9 +32,9 @@ class MemcacheManager
      * Send stats cachedump command to server to retrieve slabs items
      * Return the result if successful or false otherwise
      *
-     * @param Interger $slab Slab ID
+     * @param int $slab Slab ID
      *
-     * @return Array|Boolean
+     * @return array|Boolean
      */
     public function getItems($slab)
     {
@@ -48,10 +48,10 @@ class MemcacheManager
      * Send stats cachedump command to server to retrieve slabs items
      * Return the result if successful or false otherwise
      *
-     * @param Interger $slab Slab ID
-     * @param Interger $maxnum Max num
+     * @param int $slab Slab ID
+     * @param int $maxnum Max num
      *
-     * @return Array|Boolean
+     * @return array|Boolean
      */
     public function getCachedump($slab, $maxnum)
     {
@@ -65,7 +65,7 @@ class MemcacheManager
      * Send sizes command to server
      * Return the result if successful or false otherwise
      *
-     * @return Array|Boolean
+     * @return array|Boolean
      */
     public function getSizes()
     {
@@ -79,7 +79,7 @@ class MemcacheManager
      * Retrieve slabs stats
      * Return the result if successful or false otherwise
      *
-     * @return Array|Boolean
+     * @return array|Boolean
      */
     public function getSlabs()
     {
@@ -93,7 +93,7 @@ class MemcacheManager
      * Send stats settings command to server
      * Return the result if successful or false otherwise
      *
-     * @return Array|Boolean
+     * @return array|Boolean
      */
     public function getSettings()
     {
