@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="data-spm" content="a219a" />
     <title>Memcache Admin</title>
-    <script src="{$theme_url}statics/script/jquery.min.js" ></script>
     <link href="{$theme_url}statics/style/bootstrap.min.css" rel="stylesheet">
+    <link href="{$theme_url}statics/style/view.css" rel="stylesheet">
+    <script src="{$theme_url}statics/script/jquery.min.js" ></script>
     <script src="{$theme_url}statics/script/bootstrap.bundle.min.js" ></script>
     <script src="{$theme_url}statics/script/index.js" ></script>
-    <link href="{$theme_url}statics/style/view.css" rel="stylesheet">
 </head>
 
 <script type="text/javascript">
-    $(function(){
-        $("[data-hide]").on("click", function(){
-            $("." + $(this).attr("data-hide")).hide();
-            $("." + $(this).attr("data-hide")).hide();
-            $(this).closest("." + $(this).attr("data-hide")).hide();
-        });
+$(function(){
+    $("[data-hide]").on("click", function(){
+        $("." + $(this).attr("data-hide")).hide();
+        $("." + $(this).attr("data-hide")).hide();
+        $(this).closest("." + $(this).attr("data-hide")).hide();
     });
-
-
+});
 </script>
 
 <body>
-
 <div class="index" style="">
     <!-- nav -->
     <div class="container" >
@@ -66,11 +62,9 @@
         </div>
     </div>
 
-    {* 提示您：调用page_footer.lbi.php *}{include file='statics/library/page_footer.lbi.php'}
+    {* 提示您：调用page_footer.lbi.php *}{include file='library/page_footer.lbi.php'}
 
 </div>
-
-
 <script type="text/javascript">
 
 </script>

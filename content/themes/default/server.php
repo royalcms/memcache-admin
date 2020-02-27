@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-    {* 提示您：调用js_languages.lbi.php *}{include file='statics/library/js_languages.lbi.php'}
+    {* 提示您：调用js_languages.lbi.php *}{include file='library/js_languages.lbi.php'}
     <script type="text/javascript">
 
     </script>
 </head>
 
 <body>
-{* 提示您：调用page_header.lbi.php *}{include file='statics/library/page_header.lbi.php'}
+{* 提示您：调用page_header.lbi.php *}{include file='library/page_header.lbi.php'}
 
 <div class="content">
     <div class="row-fluid edit-page">
@@ -565,5 +565,7 @@
     </div>
 </div>
 
-{* 提示您：调用page_footer.lbi.php *}{include file='statics/library/page_footer.lbi.php'}
+{* 提示您：调用page_footer.lbi.php *}{include file='library/page_footer.lbi.php'}
+
 </body>
+</html>
