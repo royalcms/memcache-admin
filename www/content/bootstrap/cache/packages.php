@@ -20,17 +20,6 @@
     array (
     ),
   ),
-  'royalcms/environment' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Royalcms\\Component\\Environment\\EnvironmentServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'RC_ENV' => 'Royalcms\\Component\\Environment\\Facades\\Environment',
-    ),
-  ),
   'royalcms/error' => 
   array (
     'providers' => 
