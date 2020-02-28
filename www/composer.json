@@ -16,8 +16,6 @@
         "royalcms/app": "dev-master",
         "royalcms/datetime": "dev-master",
         "royalcms/default-route": "dev-master",
-        "royalcms/enum": "dev-master",
-        "royalcms/environment": "dev-master",
         "royalcms/error": "dev-master",
         "royalcms/framework": "dev-master",
         "royalcms/gettext": "dev-master",
@@ -27,7 +25,6 @@
         "royalcms/native-session": "dev-master",
         "royalcms/package": "dev-master",
         "royalcms/page": "dev-master",
-        "royalcms/plugin": "dev-master",
         "royalcms/purifier": "dev-master",
         "royalcms/requests": "dev-master",
         "royalcms/script": "dev-master",
@@ -37,7 +34,6 @@
         "royalcms/theme": "dev-master",
         "royalcms/timer": "dev-master",
         "royalcms/url": "dev-master",
-        "royalcms/uuid": "dev-master",
         "laravel/framework": "^6.0"
     },
     "require-dev": {

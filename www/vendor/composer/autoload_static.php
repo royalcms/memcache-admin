@@ -61,7 +61,6 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
         ),
         'R' => 
         array (
-            'Royalcms\\Component\\Uuid\\' => 24,
             'Royalcms\\Component\\Url\\' => 23,
             'Royalcms\\Component\\Timer\\' => 25,
             'Royalcms\\Component\\Theme\\' => 25,
@@ -71,7 +70,6 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
             'Royalcms\\Component\\Script\\' => 26,
             'Royalcms\\Component\\Requests\\' => 28,
             'Royalcms\\Component\\Purifier\\' => 28,
-            'Royalcms\\Component\\Plugin\\' => 26,
             'Royalcms\\Component\\Page\\' => 24,
             'Royalcms\\Component\\Package\\' => 27,
             'Royalcms\\Component\\NativeSession\\' => 33,
@@ -80,8 +78,6 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
             'Royalcms\\Component\\Hook\\' => 24,
             'Royalcms\\Component\\Gettext\\' => 27,
             'Royalcms\\Component\\Error\\' => 25,
-            'Royalcms\\Component\\Environment\\' => 31,
-            'Royalcms\\Component\\Enum\\' => 24,
             'Royalcms\\Component\\DefaultRoute\\' => 32,
             'Royalcms\\Component\\DateTime\\' => 28,
             'Royalcms\\Component\\App\\' => 23,
@@ -236,10 +232,6 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'Royalcms\\Component\\Uuid\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/royalcms/uuid/Royalcms/Component/Uuid',
-        ),
         'Royalcms\\Component\\Url\\' => 
         array (
             0 => __DIR__ . '/..' . '/royalcms/url/Royalcms/Component/Url',
@@ -276,10 +268,6 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
         array (
             0 => __DIR__ . '/..' . '/royalcms/purifier/Royalcms/Component/Purifier',
         ),
-        'Royalcms\\Component\\Plugin\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/royalcms/plugin/Royalcms/Component/Plugin',
-        ),
         'Royalcms\\Component\\Page\\' => 
         array (
             0 => __DIR__ . '/..' . '/royalcms/page/Royalcms/Component/Page',
@@ -311,14 +299,6 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
         'Royalcms\\Component\\Error\\' => 
         array (
             0 => __DIR__ . '/..' . '/royalcms/error/Royalcms/Component/Error',
-        ),
-        'Royalcms\\Component\\Environment\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/royalcms/environment/Royalcms/Component/Environment',
-        ),
-        'Royalcms\\Component\\Enum\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/royalcms/enum/Royalcms/Component/Enum',
         ),
         'Royalcms\\Component\\DefaultRoute\\' => 
         array (
@@ -3016,11 +2996,6 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
         'Royalcms\\Component\\DefaultRoute\\DefaultRouteTrait' => __DIR__ . '/..' . '/royalcms/default-route/Royalcms/Component/DefaultRoute/DefaultRouteTrait.php',
         'Royalcms\\Component\\DefaultRoute\\HttpQueryRoute' => __DIR__ . '/..' . '/royalcms/default-route/Royalcms/Component/DefaultRoute/HttpQueryRoute.php',
         'Royalcms\\Component\\Encryption\\EncryptionServiceProvider' => __DIR__ . '/..' . '/royalcms/framework/Royalcms/Component/Encryption/EncryptionServiceProvider.php',
-        'Royalcms\\Component\\Enum\\Demo\\RequestCode' => __DIR__ . '/..' . '/royalcms/enum/Royalcms/Component/Enum/Demo/RequestCode.php',
-        'Royalcms\\Component\\Enum\\Enum' => __DIR__ . '/..' . '/royalcms/enum/Royalcms/Component/Enum/Enum.php',
-        'Royalcms\\Component\\Environment\\EnvironmentServiceProvider' => __DIR__ . '/..' . '/royalcms/environment/Royalcms/Component/Environment/EnvironmentServiceProvider.php',
-        'Royalcms\\Component\\Environment\\Facades\\Environment' => __DIR__ . '/..' . '/royalcms/environment/Royalcms/Component/Environment/Facades/Environment.php',
-        'Royalcms\\Component\\Environment\\Phpinfo' => __DIR__ . '/..' . '/royalcms/environment/Royalcms/Component/Environment/Phpinfo.php',
         'Royalcms\\Component\\Error\\Error' => __DIR__ . '/..' . '/royalcms/error/Royalcms/Component/Error/Error.php',
         'Royalcms\\Component\\Error\\ErrorDisplay' => __DIR__ . '/..' . '/royalcms/error/Royalcms/Component/Error/ErrorDisplay.php',
         'Royalcms\\Component\\Error\\ErrorServiceProvider' => __DIR__ . '/..' . '/royalcms/error/Royalcms/Component/Error/ErrorServiceProvider.php',
@@ -3243,7 +3218,6 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
         'Royalcms\\Component\\Pipeline\\Hub' => __DIR__ . '/..' . '/royalcms/framework/Royalcms/Component/Pipeline/Hub.php',
         'Royalcms\\Component\\Pipeline\\Pipeline' => __DIR__ . '/..' . '/royalcms/framework/Royalcms/Component/Pipeline/Pipeline.php',
         'Royalcms\\Component\\Pipeline\\PipelineServiceProvider' => __DIR__ . '/..' . '/royalcms/framework/Royalcms/Component/Pipeline/PipelineServiceProvider.php',
-        'Royalcms\\Component\\Plugin\\Facades\\Plugin' => __DIR__ . '/..' . '/royalcms/plugin/Royalcms/Component/Plugin/Facades/Plugin.php',
         'Royalcms\\Component\\Preloader\\ClassPreloader' => __DIR__ . '/..' . '/royalcms/framework/Royalcms/Component/Preloader/ClassPreloader.php',
         'Royalcms\\Component\\Preloader\\Factory' => __DIR__ . '/..' . '/royalcms/framework/Royalcms/Component/Preloader/Factory.php',
         'Royalcms\\Component\\Preloader\\MyNodeVisitor' => __DIR__ . '/..' . '/royalcms/framework/Royalcms/Component/Preloader/MyNodeVisitor.php',
@@ -3424,11 +3398,6 @@ class ComposerStaticInitbb3be57fd7388b99ac697a42fd507911
         'Royalcms\\Component\\Url\\Helpers\\Arr' => __DIR__ . '/..' . '/royalcms/url/Royalcms/Component/Url/Helpers/Arr.php',
         'Royalcms\\Component\\Url\\QueryParameterBag' => __DIR__ . '/..' . '/royalcms/url/Royalcms/Component/Url/QueryParameterBag.php',
         'Royalcms\\Component\\Url\\Url' => __DIR__ . '/..' . '/royalcms/url/Royalcms/Component/Url/Url.php',
-        'Royalcms\\Component\\Uuid\\Provider\\Com' => __DIR__ . '/..' . '/royalcms/uuid/Royalcms/Component/Uuid/Provider/Com.php',
-        'Royalcms\\Component\\Uuid\\Provider\\Pecl' => __DIR__ . '/..' . '/royalcms/uuid/Royalcms/Component/Uuid/Provider/Pecl.php',
-        'Royalcms\\Component\\Uuid\\Provider\\Php' => __DIR__ . '/..' . '/royalcms/uuid/Royalcms/Component/Uuid/Provider/Php.php',
-        'Royalcms\\Component\\Uuid\\Uuid' => __DIR__ . '/..' . '/royalcms/uuid/Royalcms/Component/Uuid/Uuid.php',
-        'Royalcms\\Component\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/royalcms/uuid/Royalcms/Component/Uuid/UuidInterface.php',
         'Royalcms\\Component\\Validation\\ValidationServiceProvider' => __DIR__ . '/..' . '/royalcms/framework/Royalcms/Component/Validation/ValidationServiceProvider.php',
         'Royalcms\\Component\\View\\FileViewFinder' => __DIR__ . '/..' . '/royalcms/framework/Royalcms/Component/View/FileViewFinder.php',
         'Royalcms\\Component\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/royalcms/framework/Royalcms/Component/View/ViewFinderInterface.php',
