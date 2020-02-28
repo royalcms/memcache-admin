@@ -45,3 +45,5 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 		group="$(id -g)"
 	fi
 fi
+
+exec "$@"
